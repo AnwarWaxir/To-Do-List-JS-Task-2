@@ -18,18 +18,107 @@
         #container{
             background-color: antiquewhite;
             width: 400px;
-            height: 500px;
-            border-radius: 20px;
+            /* height: 385px; */
+            padding-bottom: 20px;
+            border-radius: 15px;
             box-shadow: 0 0 10px black;
         }
 
         #sub-container{
-
+            /* position: absolute;
+            left: 34%; */
+            /* margin-left: 22%; */
+            margin-top: 25px;
         }
 
         h1{
             text-align: center;
+            color: rgb(12, 134, 165);
+        }
 
+        input{
+            padding: 7px;
+            padding-left: 8px;
+            width: 307px;
+            margin-left: 7%;
+            border: 1px solid rgb(46, 45, 45);
+            box-shadow: 0 0 5px rgb(46, 45, 45);
+            border-radius: 5px;
+        }
+        input:focus{
+            box-shadow: 0 0 5px rgb(12, 134, 165);
+            outline-color: rgb(12, 134, 165);
+        }
+
+        .button{
+            margin-top: 15px;
+            margin-left: 35%;
+            padding: 10px 30px;
+            background-color: white;
+            border: none;
+            box-shadow: 0 0 5px black;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .button:hover{
+            background-color: rgb(12, 134, 165);
+            color: white;
+        }
+
+        ul{
+            max-height: 170px;
+            overflow-y: auto;
+            margin-bottom: 7px;
+            padding: 0;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-right: 20px;
+            margin-left: 30px;
+        }
+        li{
+            list-style-type: none;
+            text-align: left;
+            background-color: #EEEEEE;
+            margin-top: 10px;
+            padding: 10px;
+            width: 90%;
+            max-height: 50px;
+            min-height: 25px;
+            border: 1px solid rgb(12, 134, 165);
+            border-radius: 10px;
+            overflow-y: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            word-wrap: break-word; 
+        }
+
+        #reset{
+            margin-left: 37%;
+        }
+
+        .removeBtn{
+            background-color: rgb(32, 31, 31);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin-top: 0;
+            cursor: pointer;
+        }
+
+        .removeBtn:hover{
+            background-color: rgb(12, 134, 165);
+            color: white;
+        }
+
+        .li-strike-through{
+            text-decoration: line-through;
+            color: gray;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -37,10 +126,47 @@
     <div id="container">
         <h1>To-Do App</h1>
         <div id="sub-container">
-            <input type="text" name="" id="textInput"> <br>
-            <button onclick="addingTaskBtn()">Add Task</button>
-            <ul id="taskList"></ul>
+            <input type="text" name="" id="textInput" placeholder="Write something here..."> <br>
+            <button onclick="addingTaskBtn()" class="button">Add Task</button>
+                    <ul id="taskList"></ul>
+            <button onclick="resetLists()" id="reset" class="button">Reset</button>
         </div>
     </div>
+
+    <script>
+        function addingTaskBtn() {
+        var input = document.getElementById('textInput');
+        var taskList = document.getElementById('taskList');
+        var textInput = input.value;
+
+        if (!textInput.trim()) {
+            return alert("Plz Write Something...")
+        }
+
+        var li = document.createElement('li');
+        li.textContent = textInput;
+        li.onclick = function() {
+            li.classList.toggle('li-strike-through');
+        }
+
+        var button = document.createElement('button');
+        button.textContent = 'Remove';
+        button.classList.add('removeBtn')
+        button.onclick = function() {
+            taskList.removeChild(li)
+        }
+
+        li.appendChild(button)
+
+        taskList.appendChild(li)
+
+        input.value = ''
+    }
+
+    function resetLists() {
+        var taskList = document.getElementById('taskList')
+        taskList.innerHTML = '';
+    }
+    </script>
 </body>
 </html>
