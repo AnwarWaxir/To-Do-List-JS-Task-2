@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List App</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #container{
+            background-color: antiquewhite;
+            width: 400px;
+            height: 500px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px black;
+        }
+
+        #sub-container{
+
+        }
+
+        h1{
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>To-Do App</h1>
+        <div id="sub-container">
+            <input type="text" name="" id="textInput"> <br>
+            <button onclick="addingTaskBtn()">Add Task</button>
+            <ul id="taskList"></ul>
+        </div>
+    </div>
+</body>
+</html>
